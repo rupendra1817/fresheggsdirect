@@ -52,7 +52,7 @@ export default async function HomePage() {
 
       {/* Hero */}
       <section className="relative rounded-3xl overflow-hidden h-[420px]">
-        <Image src={IMG.heroTray} alt="White egg tray hero" fill sizes="100vw" className="object-cover" priority />
+        <Image src={IMG.heroTray} alt="White egg tray hero" fill sizes="100vw" unoptimized className="object-cover" priority />
         <div className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-center px-6 space-y-4">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
             Farm-Fresh Eggs
