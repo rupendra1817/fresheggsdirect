@@ -52,7 +52,7 @@ export default async function HomePage() {
 
       {/* Hero */}
       <section className="relative rounded-3xl overflow-hidden h-[420px]">
-        <Image src={IMG.heroTray} alt="White egg tray hero" fill className="object-cover" priority />
+        <Image src={IMG.heroTray} alt="White egg tray hero" fill sizes="100vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-center px-6 space-y-4">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
             🥚 Farm-Fresh Eggs
@@ -100,7 +100,7 @@ export default async function HomePage() {
       <section className="flex justify-center">
         <div className="bg-white rounded-3xl shadow-lg border-2 border-yellow-400 p-8 flex flex-col md:flex-row items-center gap-8 max-w-2xl w-full">
           <div className="relative w-full md:w-64 h-56 md:h-52 rounded-2xl overflow-hidden flex-shrink-0 shadow">
-            <Image src={IMG.productTray} alt="White egg tray 30 white eggs" fill className="object-cover object-center" />
+            <Image src={IMG.productTray} alt="White egg tray 30 white eggs" fill sizes="(max-width: 768px) 100vw, 256px" className="object-cover object-center" />
           </div>
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
             <span className="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">ONLY PRODUCT</span>
@@ -131,7 +131,7 @@ export default async function HomePage() {
           {process.map(({ step, title, desc, img, alt }) => (
             <div key={step} className="bg-white rounded-2xl shadow overflow-hidden border border-yellow-100 flex flex-col">
               <div className="relative h-52 w-full">
-                <Image src={img} alt={alt} fill className="object-cover" />
+                <Image src={img} alt={alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                 <span className="absolute top-3 left-3 bg-yellow-400 text-gray-900 font-bold text-sm w-8 h-8 rounded-full flex items-center justify-center shadow">
                   {step}
                 </span>
@@ -152,7 +152,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {gallery.map(({ src, alt, label }) => (
             <div key={alt} className="relative h-52 rounded-2xl overflow-hidden shadow group">
-              <Image src={src} alt={alt} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              <Image src={src} alt={alt} fill sizes="(max-width: 640px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs font-semibold text-center py-2">
                 {label}
               </div>
@@ -163,7 +163,7 @@ export default async function HomePage() {
 
       {/* CTA Banner */}
       <section className="relative rounded-3xl overflow-hidden h-52">
-        <Image src={IMG.ctaBanner} alt="Fresh white eggs" fill className="object-cover" />
+        <Image src={IMG.ctaBanner} alt="Fresh white eggs" fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-yellow-900/65 flex flex-col items-center justify-center text-center gap-3 px-6">
           <h3 className="text-2xl font-bold text-white">Ready to Order Fresh White Eggs?</h3>
           <p className="text-yellow-200 text-sm">Tray of 30 · Today ₹{price.pricePerTray} · Cash on Delivery</p>

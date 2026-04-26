@@ -80,7 +80,7 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
 
       {/* Hero */}
       <div className="relative rounded-2xl overflow-hidden h-44">
-        <Image src={IMG.hero} alt="White egg tray" fill className="object-cover" priority />
+        <Image src={IMG.hero} alt="White egg tray" fill sizes="100vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-center gap-1">
           <h1 className="text-3xl font-extrabold text-white">Place Your Order</h1>
           <p className="text-yellow-300 text-sm">
@@ -133,7 +133,7 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
             </div>
 
             <div className="relative h-36 rounded-xl overflow-hidden">
-              <Image src={IMG.summary} alt="White egg tray" fill className="object-cover" />
+              <Image src={IMG.summary} alt="White egg tray" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
 
             {price ? (
@@ -172,14 +172,14 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
 
           {/* Farm images */}
           <div className="relative h-48 rounded-2xl overflow-hidden shadow">
-            <Image src={IMG.hen1} alt="Our hens on the farm" fill className="object-cover" />
+            <Image src={IMG.hen1} alt="Our hens on the farm" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             <div className="absolute bottom-0 left-0 right-0 bg-black/45 text-white text-sm text-center py-2">
               🐔 Our hens — free-range &amp; naturally fed
             </div>
           </div>
 
           <div className="relative h-48 rounded-2xl overflow-hidden shadow">
-            <Image src={IMG.hen2} alt="Hen close up" fill className="object-cover" />
+            <Image src={IMG.hen2} alt="Hen close up" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             <div className="absolute bottom-0 left-0 right-0 bg-black/45 text-white text-sm text-center py-2">
               🥚 Fresh white eggs — collected this morning
             </div>
