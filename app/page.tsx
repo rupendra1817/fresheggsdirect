@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import FlashSaleCountdown from "@/components/FlashSaleCountdown";
+import OrderQRCode from "@/components/OrderQRCode";
 import { PRICE_DATA, FLASH_SALE } from "@/lib/priceData";
 
 const IMG = {
@@ -160,6 +161,9 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* QR Code */}
+      <OrderQRCode />
 
       {/* CTA Banner */}
       <section className="relative rounded-3xl overflow-hidden h-52">
