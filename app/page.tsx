@@ -10,7 +10,7 @@ const IMG = {
   step2Collect: "/farm/2.png",
   step3Tray:    "/farm/3.png",
   step4Deliver: "/farm/4.png",
-  ctaBanner:    "/farm/cta-banner.jpg",
+  ctaBanner:    "/farm/bottom-banner.jpg",
 };
 
 const gallery = [
