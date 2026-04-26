@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span>📞 Support: <a href="tel:+919599031817" className="font-bold hover:underline">+91 95990 31817</a></span>
               <span>🕗 Mon–Sun, 7 AM – 7 PM</span>
             </div>
-            <div className="text-sm text-gray-700">© {new Date().getFullYear()} Fresh Eggs Direct. All rights reserved.</div>
+            <div className="text-sm text-gray-700">© 2026 Fresh Eggs Direct. All rights reserved.</div>
           </div>
         </footer>
       </body>
