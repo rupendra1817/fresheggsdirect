@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -31,8 +32,8 @@ export default function AboutPage() {
       <div className="bg-white rounded-2xl shadow p-8 border border-yellow-100 space-y-3">
         <h2 className="text-2xl font-bold text-gray-800">Meet the Owner</h2>
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-yellow-400 flex items-center justify-center text-3xl flex-shrink-0">
-            👨‍🌾
+          <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 relative">
+            <Image src="/farm/manoj-yadav.jpeg" alt="Manoj Yadav" fill sizes="64px" className="object-cover object-top" />
           </div>
           <div>
             <p className="font-bold text-gray-800 text-lg">Manoj Yadav</p>
