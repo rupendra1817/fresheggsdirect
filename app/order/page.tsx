@@ -8,7 +8,7 @@ const TRAY_QTY = 30;
 const IMG = {
   hero:    "/farm/white-eggs.jpg",
   summary: "/farm/egg-in-tray.png",
-  hen1:    "/farm/Happy-Free-Range-Hens.png",
+  hen1:    "/farm/1.png",
   hen2:    "/farm/morning-collection.png",
 };
 
