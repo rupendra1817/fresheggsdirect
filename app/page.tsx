@@ -55,7 +55,7 @@ export default async function HomePage() {
         <Image src={IMG.heroTray} alt="White egg tray hero" fill sizes="100vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-center px-6 space-y-4">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-            🥚 Farm-Fresh Eggs
+            Farm-Fresh Eggs
           </h1>
           <p className="text-lg text-yellow-200 max-w-xl">
             Free-range hens · Collected daily · Sold in trays of 30 · Delivered locally
