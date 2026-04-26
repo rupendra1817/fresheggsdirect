@@ -163,7 +163,7 @@ export default async function HomePage() {
 
       {/* CTA Banner */}
       <section className="relative rounded-3xl overflow-hidden h-52">
-        <Image src={IMG.ctaBanner} alt="Fresh white eggs" fill sizes="100vw" className="object-cover" />
+        <Image src={IMG.ctaBanner} alt="Fresh white eggs" fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" loading="eager" priority />
         <div className="absolute inset-0 bg-yellow-900/65 flex flex-col items-center justify-center text-center gap-3 px-6">
           <h3 className="text-2xl font-bold text-white">Ready to Order Fresh White Eggs?</h3>
           <p className="text-yellow-200 text-sm">Tray of 30 · Today ₹{price.pricePerTray} · Cash on Delivery</p>

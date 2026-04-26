@@ -80,7 +80,7 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
 
       {/* Hero */}
       <div className="relative rounded-2xl overflow-hidden h-44">
-        <Image src={IMG.hero} alt="White egg tray" fill sizes="100vw" className="object-cover" priority />
+        <Image src={IMG.hero} alt="White egg tray" fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" priority />
         <div className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center text-center gap-1">
           <h1 className="text-3xl font-extrabold text-white">Place Your Order</h1>
           <p className="text-yellow-300 text-sm">
