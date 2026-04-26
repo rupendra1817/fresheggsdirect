@@ -4,7 +4,7 @@ import FlashSaleCountdown from "@/components/FlashSaleCountdown";
 import { PRICE_DATA, FLASH_SALE } from "@/lib/priceData";
 
 const IMG = {
-  heroTray:     "/farm/white-eggs.jpg",
+  heroTray:     "/farm/egg-in-tray.png",
   productTray:  "/farm/egg-in-tray.png",
   step1Hens:    "/farm/1.png",
   step2Collect: "/farm/2.png",
