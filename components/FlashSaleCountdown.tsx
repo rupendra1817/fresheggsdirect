@@ -13,14 +13,17 @@ function getTimeUntilMidnight() {
 }
 
 export default function FlashSaleCountdown() {
-  const [time, setTime] = useState(getTimeUntilMidnight());
+  const [time, setTime] = useState<{ h: number; m: number; s: number } | null>(null);
 
   useEffect(() => {
+    setTime(getTimeUntilMidnight());
     const interval = setInterval(() => setTime(getTimeUntilMidnight()), 1000);
     return () => clearInterval(interval);
   }, []);
 
   const pad = (n: number) => String(n).padStart(2, "0");
+
+  if (!time) return null;
 
   return (
     <div className="flex items-center gap-2 text-white">
