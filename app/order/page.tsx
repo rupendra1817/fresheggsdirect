@@ -38,6 +38,27 @@ export default function OrderPage() {
   const total = discountedPrice * Number(form.quantity);
   const totalEggs = TRAY_QTY * Number(form.quantity);
 
+  const [listeningField, setListeningField] = useState<string | null>(null);
+
+  function startListening(field: string) {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return alert("Speech recognition not supported in this browser.");
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.interimResults = false;
+    recognition.onstart = () => setListeningField(field);
+    recognition.onend = () => setListeningField(null);
+    recognition.onresult = (e: any) => {
+      let transcript = e.results[0][0].transcript.trim();
+      if (field === "quantity") {
+        const wordToNum: Record<string, string> = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10" };
+        transcript = wordToNum[transcript.toLowerCase()] ?? transcript.replace(/[^0-9]/g, "");
+      }
+      setForm((prev) => ({ ...prev, [field]: field === "quantity" ? transcript : ((prev as any)[field] ? (prev as any)[field] + " " + transcript : transcript) }));
+    };
+    recognition.start();
+  }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -99,22 +120,22 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
         {/* Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow p-8 space-y-5 border border-yellow-100">
           <Field label="Full Name">
-            <input name="name" required value={form.name} onChange={handleChange} placeholder="e.g. Rahul Sharma" />
+            <SpeechInput name="name" required value={form.name} onChange={handleChange} placeholder="e.g. Rahul Sharma" onMic={() => startListening("name")} listening={listeningField === "name"} />
           </Field>
           <Field label="Phone Number">
-            <input name="phone" required type="tel" value={form.phone} onChange={handleChange} placeholder="e.g. +91 98765 43210" />
+            <SpeechInput name="phone" required type="tel" value={form.phone} onChange={handleChange} placeholder="e.g. +91 98765 43210" onMic={() => startListening("phone")} listening={listeningField === "phone"} />
           </Field>
           <Field label="Email Address">
-            <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="e.g. rahul@gmail.com" />
+            <SpeechInput name="email" type="email" value={form.email} onChange={handleChange} placeholder="e.g. rahul@gmail.com" onMic={() => startListening("email")} listening={listeningField === "email"} />
           </Field>
           <Field label="Delivery Address">
-            <input name="address" required value={form.address} onChange={handleChange} placeholder="Flat No-1557, Tower-C, 7th avenue, Gaur City" />
+            <SpeechInput name="address" required value={form.address} onChange={handleChange} placeholder="Flat No-1557, Tower-C, 7th avenue, Gaur City" onMic={() => startListening("address")} listening={listeningField === "address"} />
           </Field>
           <Field label="Number of Trays">
-            <input name="quantity" required type="number" min={1} max={100} value={form.quantity} onChange={handleChange} />
+            <SpeechInput name="quantity" required type="number" min={1} max={100} value={form.quantity} onChange={handleChange} placeholder="e.g. 2" onMic={() => startListening("quantity")} listening={listeningField === "quantity"} />
           </Field>
           <Field label="Special Instructions (optional)">
-            <textarea name="notes" rows={3} value={form.notes} onChange={handleChange} placeholder="e.g. Call before delivery, leave at gate…" />
+            <SpeechInput name="notes" textarea rows={3} value={form.notes} onChange={handleChange} placeholder="e.g. Call before delivery, leave at gate…" onMic={() => startListening("notes")} listening={listeningField === "notes"} />
           </Field>
           <button type="submit" disabled={loading || !price}
             className="w-full bg-yellow-400 hover:bg-yellow-500 disabled:opacity-60 text-gray-900 font-bold py-3 rounded-full transition-colors text-lg">
@@ -195,11 +216,30 @@ Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "sh
   );
 }
 
+function SpeechInput({ onMic, listening, textarea, rows, ...props }: any) {
+  return (
+    <div className="relative">
+      {textarea
+        ? <textarea rows={rows} {...props} className="w-full border border-gray-300 rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none" />
+        : <input {...props} className="w-full border border-gray-300 rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-yellow-400" />}
+      <button
+        type="button"
+        onClick={onMic}
+        className={`absolute right-2 ${textarea ? "top-2" : "top-1/2 -translate-y-1/2"} p-1 transition-colors ${listening ? "text-red-500 animate-pulse" : "text-gray-400 hover:text-yellow-500"}`}
+        title="Speak">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm-1 17.93V21H9v2h6v-2h-2v-2.07A8 8 0 0 0 20 11h-2a6 6 0 0 1-12 0H4a8 8 0 0 0 7 7.93z"/>
+        </svg>
+      </button>
+    </div>
+  );
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1">
       <label className="text-sm font-medium text-gray-700">{label}</label>
-      <div className="[&>input]:w-full [&>input]:border [&>input]:border-gray-300 [&>input]:rounded-lg [&>input]:px-3 [&>input]:py-2 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:focus:ring-yellow-400 [&>textarea]:w-full [&>textarea]:border [&>textarea]:border-gray-300 [&>textarea]:rounded-lg [&>textarea]:px-3 [&>textarea]:py-2 [&>textarea]:focus:outline-none [&>textarea]:focus:ring-2 [&>textarea]:focus:ring-yellow-400">
+      <div>
         {children}
       </div>
     </div>
