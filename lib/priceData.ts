@@ -2,7 +2,7 @@ export const PRICE_DATA = {
   product: "White Egg Tray",
   eggsPerTray: 30,
   currency: "INR",
-  pricePerTray: 200,
+  pricePerTray: 210,
   effectiveDate: new Date().toISOString().split("T")[0],
   trend: "stable" as "up" | "down" | "stable",
   previousPrice: 200,
