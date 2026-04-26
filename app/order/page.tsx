@@ -42,21 +42,30 @@ export default function OrderPage() {
 
   function startListening(field: string) {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SpeechRecognition) return alert("Speech recognition not supported in this browser.");
-    const recognition = new SpeechRecognition();
-    recognition.lang = "en-IN";
-    recognition.interimResults = false;
-    recognition.onstart = () => setListeningField(field);
-    recognition.onend = () => setListeningField(null);
-    recognition.onresult = (e: any) => {
-      let transcript = e.results[0][0].transcript.trim();
-      if (field === "quantity") {
-        const wordToNum: Record<string, string> = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10" };
-        transcript = wordToNum[transcript.toLowerCase()] ?? transcript.replace(/[^0-9]/g, "");
-      }
-      setForm((prev) => ({ ...prev, [field]: field === "quantity" ? transcript : ((prev as any)[field] ? (prev as any)[field] + " " + transcript : transcript) }));
-    };
-    recognition.start();
+    if (!SpeechRecognition) return alert("Speech recognition not supported. Please use Chrome or Safari.");
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(() => {
+        const recognition = new SpeechRecognition();
+        recognition.lang = "en-IN";
+        recognition.interimResults = false;
+        recognition.continuous = false;
+        recognition.onstart = () => setListeningField(field);
+        recognition.onend = () => setListeningField(null);
+        recognition.onerror = (e: any) => {
+          setListeningField(null);
+          if (e.error === "not-allowed") alert("Microphone permission denied. Please allow mic access and try again.");
+        };
+        recognition.onresult = (e: any) => {
+          let transcript = e.results[0][0].transcript.trim();
+          if (field === "quantity") {
+            const wordToNum: Record<string, string> = { one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10" };
+            transcript = wordToNum[transcript.toLowerCase()] ?? transcript.replace(/[^0-9]/g, "");
+          }
+          setForm((prev) => ({ ...prev, [field]: field === "quantity" ? transcript : ((prev as any)[field] ? (prev as any)[field] + " " + transcript : transcript) }));
+        };
+        recognition.start();
+      })
+      .catch(() => alert("Microphone permission denied. Please allow mic access and try again."));
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
