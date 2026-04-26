@@ -69,7 +69,11 @@ ${form.notes ? `Notes: ${form.notes}` : ""}
 Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}`;
 
     const whatsappURL = `https://wa.me/919599031817?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, "_blank");
+    const a = document.createElement("a");
+    a.href = whatsappURL;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.click();
 
     await new Promise((r) => setTimeout(r, 800));
     router.push("/thank-you");
