@@ -27,22 +27,22 @@ export default function ContactPage() {
       {/* Contact Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-        <a href="tel:+917011310521"
+        <a href="tel:+918796322212"
           className="bg-white rounded-2xl shadow p-6 border border-yellow-100 flex items-center gap-4 hover:border-yellow-400 transition-colors">
           <span className="text-4xl">📞</span>
           <div>
             <p className="font-bold text-gray-800">Call Us</p>
-            <p className="text-yellow-600 font-semibold text-lg">+91 70113 10521</p>
+            <p className="text-yellow-600 font-semibold text-lg">+91 87963 22212</p>
             <p className="text-xs text-gray-400">Mon–Sun, 7 AM – 7 PM</p>
           </div>
         </a>
 
-        <a href="https://wa.me/917011310521" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/918796322212" target="_blank" rel="noopener noreferrer"
           className="bg-white rounded-2xl shadow p-6 border border-yellow-100 flex items-center gap-4 hover:border-yellow-400 transition-colors">
           <span className="text-4xl">💬</span>
           <div>
             <p className="font-bold text-gray-800">WhatsApp</p>
-            <p className="text-yellow-600 font-semibold text-lg">+91 70113 10521</p>
+            <p className="text-yellow-600 font-semibold text-lg">+91 87963 22212</p>
             <p className="text-xs text-gray-400">Quick replies during business hours</p>
           </div>
         </a>

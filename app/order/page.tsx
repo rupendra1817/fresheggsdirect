@@ -98,7 +98,7 @@ ${form.notes ? `Notes: ${form.notes}` : ""}
 --------------------------------
 Time: ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}`;
 
-    const whatsappURL = `https://wa.me/917011310521?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/918796322212?text=${encodeURIComponent(message)}`;
     const a = document.createElement("a");
     a.href = whatsappURL;
     a.target = "_blank";

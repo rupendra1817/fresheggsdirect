@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-4xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-gray-900 font-bold text-lg">🥚 Fresh Eggs Direct</div>
             <div className="flex flex-col items-center gap-1 text-sm text-gray-800">
-              <span>📞 Support: <a href="tel:+917011310521" className="font-bold hover:underline">+91 70113 10521</a></span>
+              <span>📞 Support: <a href="tel:+918796322212" className="font-bold hover:underline">+91 87963 22212</a></span>
               <span>🕗 Mon–Sun, 7 AM – 7 PM</span>
             </div>
             <div className="text-sm text-gray-700">© 2026 Fresh Eggs Direct. All rights reserved.</div>
