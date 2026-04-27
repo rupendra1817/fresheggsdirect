@@ -61,6 +61,9 @@ export default async function HomePage() {
           <p className="text-lg text-yellow-200 max-w-xl">
             Free-range hens · Collected daily · Sold in trays of 30 · Delivered locally
           </p>
+          <div className="bg-green-500/90 text-white font-bold px-5 py-2 rounded-full text-sm tracking-wide shadow-lg">
+            🚚 Free Home Delivery — Every Order!
+          </div>
           {/* Today's price from API */}
           <div className="bg-black/40 rounded-2xl px-6 py-3 flex flex-col items-center gap-1">
             <p className="text-xs text-yellow-300 uppercase tracking-widest">Today&apos;s Price</p>
